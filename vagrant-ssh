@@ -1,0 +1,21 @@
+Host iaac
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/alan/iac/.vagrant/machines/iaac/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host server
+  HostName 127.0.0.1
+  User vagrant
+  Port 2200
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/alan/iac/.vagrant/machines/server/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
