@@ -1,0 +1,86 @@
+Comandos Docker
+
+docker image pull alpine
+
+docker container run
+
+docker container ls
+
+docker container start (id)
+
+docker container stop (id)
+
+docker container ls -a 
+
+docker container rm (id)
+
+docker container rm --force (id)
+
+docker exce (nome) cat /etc/fstab (Comandos)
+
+docker container run -dti alpine
+
+docker container inspect apache
+curl 172.16.0.2
+
+docker image ls 
+
+CTRL + P + Q - SAI DO BASH TRAVADO DO DOCKER (TIPO O QUE O HTTPD FAZ)
+
+Aplicaço de exemplo
+ git clone https://github.com/4linux/4542-site html
+
+
+Criar volume externo dentro do container
+docker container run --detach --name apache --volume /home/alan/docker/html/:/usr/local/apache2/htdocs/ httpd:alpine
+
+pegar o ip do container com grep
+
+ docker container inspect apache | grep IPAddress
+
+Expor porta da aplicaço 
+
+docker container run --detach --name apache --volume /home/alan/docker/html/:/usr/local/apache2/htdocs/ --publish 80:80 httpd:alpine
+
+Rodando o nginx em outr aporta
+docker container run --detach --name nginx --volume /home/alan/docker/html/:/usr/share/nginx/html --publish 81:80 nginx:alpine
+
+
+Descobrir quem  o server
+curl -I localhost 
+curl -I localhost :81
+
+criar container sql com variveis
+docker container run --detach --name mariadb --env MYSQL_ROOT_PASSWORD=satan666 -e MYSQL_USER=container -e MYSQL_PASSWORD=satan666 -e MYSQL_DATABASE=container mariadb
+
+logs do container 
+docker container logs -f mariadb  
+
+criar com um volume persistente para um sgdb salvar o db sem ligar pra permisso de user
+docker container run --detach --name mariadb --env MYSQL_ROOT_PASSWORD=satan666 -e MYSQL_USER=container -e MYSQL_PASSWORD=satan666 -e MYSQL_DATABASE=container -v dados:/var/lib/mysql  mariadb 
+
+Listar volumes criados pelo docker
+docker volume ls
+Remove os sem uso
+docker volume prune 
+
+
+Iniciar o container mariadb
+docker container start mariadb
+
+Repositrio de apliçoes 
+ git clone https://github.com/4linux/containers-apps.git
+
+
+DB_HOST=172.17.0.2 DB_USER=container DB_PASS=satan666 DB_NAME=container flask run -h 0.0.0.0
+
+
+
+
+Criar Imagem Docker
+
+docker container rm -f flask 
+
+docker image build --tag flask .
+docker container run --detach -e DB_HOST=172.17.0.2 -e DB_USER=container -e DB_PASS=satan666 -e DB_NAME=container -p 5000:5000 --name flask flask
+

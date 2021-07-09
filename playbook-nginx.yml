@@ -27,7 +27,7 @@
        state: touch
        owner: www-data
        group: adm
-       mode: 0755
+       mode: 0644
 
   - name: Nginx content
     copy:
@@ -37,11 +37,11 @@
           <p> Esta variavel vem do inventario: {{ var_do_inventory }} </p>
           <p> Data Atual {{ ansible_date_time.iso8601 }} </p>
           <p> conteudo da instalacao do nginx: {{ var_nginx }} </p>
-          <p> Conteudo da variavel response: {{ response.stdout }} </p>
+          
           <p> Conteudo da variavel "Datacenter" do inventario: {{ datacenter }}
 
   - name: Enable and start nginx service
     systemd:
-      state: started
+       state: started
        name: nginx
        enabled: yes

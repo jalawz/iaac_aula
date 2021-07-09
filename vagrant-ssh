@@ -19,3 +19,4 @@ Host server
   IdentityFile /home/alan/iac/.vagrant/machines/server/virtualbox/private_key
   IdentitiesOnly yes
   LogLevel FATAL
+

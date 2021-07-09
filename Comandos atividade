@@ -1,0 +1,120 @@
+Comandos
+
+#Configurar o Git para SSH local Ubunutu
+#checar ssh criado e agente ssh
+ls -al ~/.ssh
+eval "$(ssh-agent -s)"
+
+#adicionar chave ssh ao agente ssh 
+ssh-keygen -t rsa -C alansenairj@gmail.com
+ssh-add ~/.ssh/id_rsa
+
+#copiar chave ssh para colar no Git (https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+sudo apt-get install xclip
+xclip -selection clipboard <~/.ssh/id_rsa.pub
+
+#testar autenticação ssh (não funciona se colocar o seu user)
+ssh -T git@github.com
+
+#configurar git
+git config --global user.name "alansenairj"
+git config --global user.email "alansenairj@gmail.com"
+
+
+git config --global color.ui auto
+git config --global core.editor "code --wait"
+git config --list
+
+
+#criando e adicionando arquivos no git
+
+git add .
+git commit -m "primeiro upload"
+git branch -M main
+git remote add origin https://github.com/alansenairj/iac.git
+git push --set-upstream origin main
+git config --global credential.helper cache
+git pull origin main
+
+
+#vagrant
+
+cd ~
+mkdir iac
+cd iac
+cp (os arquivos od gitclone) para iac
+vagrant up
+apt install net-tools
+netstat -an |grep 80
+vagrant ssh iaac
+apt install ansible sshpass -y
+ansible 127.0.0.1 -m ping
+mkdir ansible
+cd ansible
+
+#SSH
+
+(Na server)
+vagrant ssh server
+cd .ssh/
+nano authorized_keys (adicionar as chaves geradas, uma embaixo da outra)
+
+(Na iaac)
+ssh-keygen
+ls -la
+cat id_rsa.pub 
+ssh vagrant@10.0.0.11
+
+(no PC host)
+ssh-keygen
+cd .ssh/
+cat id_rsa.pub 
+
+para o erro WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+ssh-keygen -R 10.0.0.11
+
+
+Instalar ansible no server e iaac  (10.0.0.11 e 10.0.0.10)
+
+apt install ansible sshpass -y
+ansible 127.0.0.1 -m ping
+
+
+#Git atualizar
+
+git add .
+git commit -m "upoad aula 3"
+git reset HEAD -- .vagrant
+git pull origin main
+git add .
+git push --set-upstream origin main
+git pull origin main
+
+git rm -r --cached .vagrant
+git commit -m "removi pasta vagrant"
+git push origin main
+
+git rm -r --cached id_rsa.pub
+git commit -m "removi rsa"
+git push origin main
+
+
+# comandos Ansible Listas e variveis
+ansible-playbook playbook-lookup-1.yml
+
+
+
+systemctl status nginx
+
+
+
+para limpar o syslog que o vlc enche
+
+truncate -s 0 /var/log/syslog
+
+
+
+
+
+
+

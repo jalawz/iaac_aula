@@ -4,4 +4,4 @@
   tasks:
   - name: Exibindo Variavel
     debug:
-      msg: "{{ turma }}"
+     msg: "{{ turma }}"

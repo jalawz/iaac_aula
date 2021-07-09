@@ -1,0 +1,18 @@
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - 
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'\n
+sudo apt update
+sudo apt install jenkins
+sudo apt install openjdk-11-jdk 
+java --version
+sudo systemctl start jenkins 
+sudo systemctl start jenkins 
+sudo systemctl status jenkins
+sudo ufw allow 8080
+sudo ufw status
+
+sudo su
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+da75853fc0264b64814d53d2e34ffbd5
+
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-pt

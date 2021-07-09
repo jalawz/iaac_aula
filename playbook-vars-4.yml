@@ -1,11 +1,12 @@
-- hosts: local
+- hosts: local 
   gather_facts: True
 
-  tasks:
-    - name:
-      shell: "date -u"
-      register: linux_date
+  tasks: 
+  - name: 
+    shell: "date -u" 
+    register: linux_date
 
-    - name: Exibindo variaveis
-      debug:
-        msg: "Sua primeira interface é {{ ansible_facts['interfaces'][0] }}"
+  - name: Exibindo variaveis 
+    debug: 
+      msg: "Sua primeira interface é {{ ansible_facts['interfaces'][0] }}" 
+
